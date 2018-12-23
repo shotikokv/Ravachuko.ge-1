@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate(5);
+        $keyword = $request->input('keyword');
+
+        $products = Product::latest()->search($keyword)->paginate(5);
 
         DB::table('products')->get();
 
-        return view('products', compact('products'));
+        return view('products', compact('products', 'keyword'));
     }
 }

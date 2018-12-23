@@ -27,6 +27,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $ratings
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product search($keyword)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereRatings($value)
  */
 class Product extends Model
 {
@@ -39,4 +42,13 @@ class Product extends Model
     protected $fillable = [
         'name', 'slug', 'description', 'price', 'ratings'
     ];
+
+    public function scopeSearch($query, $keyword)
+    {
+        /**
+         * @var \Eloquent $query
+         */
+        return $query->where('name', 'like', '%' . $keyword . '%')
+            ->orWhere('description', 'like', '%' . $keyword . '%');
+    }
 }
