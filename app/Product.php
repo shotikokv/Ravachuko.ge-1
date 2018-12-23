@@ -40,7 +40,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'description', 'price', 'ratings'
+        'name', 'description', 'price', 'rating'
     ];
 
     public function scopeSearch($query, $keyword)
