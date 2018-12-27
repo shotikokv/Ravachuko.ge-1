@@ -21,4 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/products', 'ProductController@index')->name('product');
 
-Route::get('/product/{name?}', ['uses' =>'ProductPageController@index']);
+Route::get('/product/{name?}', ['uses' =>'ProductPageController@index'])->name('productpage');

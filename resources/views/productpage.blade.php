@@ -13,6 +13,7 @@
 
                 <p>{{ $product->first()->description }}</p>
             </div>
+            <a href="{{ redirect()->back()->getTargetUrl() }}" class="btn btn-danger">უკან</a>
         </div>
     </div>
 @endsection

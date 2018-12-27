@@ -18,7 +18,7 @@
                                 <button type="button" class="btn btn-info disabled">
                                     Raintigs: {{ $product->rating }}</button>
                                 <p class="card-text">{{ $product->description }}</p>
-                                <a href="#" class="btn btn-primary">ნახვა</a>
+                                <a href="{{ route('productpage', ['name' => $product->name]) }}" class="btn btn-primary">ნახვა</a>
                             </div>
                         </div>
                     </div>
