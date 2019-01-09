@@ -7,6 +7,5 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'name' => $faker->unique()->name,
         'description' => $faker->text,
         'price' => $faker->numberBetween(20, 2000),
-        'rating' => $faker->numberBetween(1, 100),
     ];
 });

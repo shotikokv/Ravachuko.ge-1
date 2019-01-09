@@ -16,7 +16,7 @@
                             <div class="card-body">
                                 <h5 class="card-title d-inline pr-2">{{ $product->name }}</h5>
                                 <button type="button" class="btn btn-info disabled">
-                                    Raintigs: {{ $product->rating }}</button>
+                                    Rating: rating</button>
                                 <p class="card-text">{{ $product->description }}</p>
                                 <a href="{{ route('productpage', ['name' => $product->name]) }}" class="btn btn-primary">ნახვა</a>
                             </div>
