@@ -2,13 +2,27 @@
 
 @section('content')
     <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    @foreach($categories as $category)
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ $category->name }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+                <form class="form-inline my-2 my-lg-0" action="{{ route('product') }}" method="get">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                           name="keyword" value="{{ isset($keyword) ? $keyword : '' }}">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form action="{{ route('product') }}" method="get" class="form-inline md-form mr-auto mb-4">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" name="keyword"
-                           value="{{ isset($keyword) ? $keyword : '' }}">
-                    <button class="btn bg-success btn-rounded btn-sm my-0" type="submit">Search</button>
-                </form>
                 @foreach($products as $product)
                     <div class="pt-5">
                         <div class="card">

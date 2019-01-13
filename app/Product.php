@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $ratings
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product search($keyword)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereRatings($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Categories[] $categories
  */
 class Product extends Model
 {
@@ -42,6 +43,11 @@ class Product extends Model
     protected $fillable = [
         'name', 'description', 'price'
     ];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Categories::class);
+    }
 
     public function scopeSearch($query, $keyword)
     {
