@@ -5,12 +5,17 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
                     @foreach($categories as $category)
+                        @if(strpos(url()->current(), 'category'))
+                            @if($category->id == $id)
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ route('category', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                </li>
+                                @continue
+                            @endif
+                        @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ $category->name }}</a>
+                        <a class="nav-link" href="{{ route('category', ['id' => $category->id]) }}">{{ $category->name }}</a>
                     </li>
                     @endforeach
                 </ul>
@@ -39,7 +44,7 @@
                 @endforeach
                 <div class="pt-5">
                     <div class="card-footer">
-                        {!! $products->appends(['keyword' => $keyword])->links() !!}
+                        {{ $products->links() }}
                     </div>
                 </div>
             </div>

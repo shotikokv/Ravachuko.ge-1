@@ -1,6 +1,6 @@
 <?php
 
-use App\Categories;
+use App\Category;
 use Illuminate\Database\Seeder;
 
 class CategoriesSeeder extends Seeder
@@ -12,6 +12,6 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
-        factory(Categories::class)->times(5)->create();
+        factory(Category::class)->times(5)->create();
     }
 }
